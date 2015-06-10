@@ -20,8 +20,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile files('libs/Parse-1.9.2.jar')
     compile files('libs/ParseCrashReporting-1.9.2.jar')
+    compile files('libs/bolts-android-1.1.4.jar')
+    compile 'com.getbase:floatingactionbutton:1.9.1'
+    compile 'com.android.support:support-annotations:22.1.1'
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile files('libs/com.amulyakhare.textdrawable-1.0.1-sources.jar')
 }
