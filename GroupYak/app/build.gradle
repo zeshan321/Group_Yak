@@ -28,5 +28,4 @@ dependencies {
     compile 'com.getbase:floatingactionbutton:1.9.1'
     compile 'com.android.support:support-annotations:22.1.1'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    compile files('libs/com.amulyakhare.textdrawable-1.0.1-sources.jar')
 }

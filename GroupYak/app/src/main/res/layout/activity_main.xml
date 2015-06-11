@@ -14,6 +14,7 @@
         android:id="@+id/groupList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         tools:context="com.amulyakhare.td.sample.MiscActivity">
 
     </ListView>

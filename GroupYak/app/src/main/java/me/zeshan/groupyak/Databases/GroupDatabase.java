@@ -1,4 +1,4 @@
-package me.zeshan.groupyak.Database;
+package me.zeshan.groupyak.Databases;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,10 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class GroupDatabase extends SQLiteOpenHelper {
 
@@ -41,7 +38,7 @@ public class GroupDatabase extends SQLiteOpenHelper {
 
     public void deleteMessage(String ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CONTACTS, "ID = ?", new String[] { ID });
+        db.delete(TABLE_CONTACTS, "? = ?", new String[] { KEY_ID, ID });
         db.close();
     }
 
@@ -59,10 +56,10 @@ public class GroupDatabase extends SQLiteOpenHelper {
     public HashMap getGroups() {
         HashMap<String, String> map = new HashMap<>();
         try {
-            String selectQuery = "SELECT * FROM ?";
+            String selectQuery = "SELECT * FROM ( SELECT * FROM " + TABLE_CONTACTS + " ORDER BY ID DESC) sub ORDER BY ID ASC";
 
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery, new String[] {TABLE_CONTACTS});
+            Cursor cursor = db.rawQuery(selectQuery, null);
 
             if (cursor != null && cursor.moveToFirst()) {
                 while (!cursor.isAfterLast()) {
@@ -77,6 +74,7 @@ public class GroupDatabase extends SQLiteOpenHelper {
             cursor.close();
             db.close();
         } catch (SQLiteException e) {
+            e.printStackTrace();
             return map;
         }
         return map;

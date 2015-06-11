@@ -5,15 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.parse.ParseObject;
-
-import java.util.HashMap;
 
 import me.zeshan.groupyak.Adapters.GroupArrayAdapter;
-import me.zeshan.groupyak.Adapters.GroupText;
-import me.zeshan.groupyak.Database.GroupDatabase;
+import me.zeshan.groupyak.Adapters.GroupHandler;
+import me.zeshan.groupyak.Buttons.FloatListeners;
+import me.zeshan.groupyak.Buttons.GroupListLong;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -29,15 +25,12 @@ public class MainActivity extends ActionBarActivity {
         groupArrayAdapter = new GroupArrayAdapter(getApplicationContext(), R.layout.group_layout);
         groupList = (ListView) findViewById(R.id.groupList);
 
-        GroupDatabase groupDatabase = new GroupDatabase(this);
-        groupDatabase.addGroup("Testing", "ASD");
+        // Setup groups stored in DB
+        new GroupHandler(this).initialSetup();
 
-        HashMap<String, String> map = groupDatabase.getGroups();
-        for (String s: map.keySet()) {
-            groupArrayAdapter.add(new GroupText(s, map.get(s)));
-        }
-
-        groupList.setAdapter(groupArrayAdapter);
+        // Setup button listeners
+        new FloatListeners(this);
+        new GroupListLong(this);
     }
 
     @Override
@@ -49,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case 1:
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
