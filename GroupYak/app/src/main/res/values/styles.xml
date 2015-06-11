@@ -9,6 +9,7 @@
     <style name="ActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@color/actionbar</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+
     </style>
 
     <style name="MyActionBarTitleText"

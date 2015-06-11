@@ -97,14 +97,20 @@ public class GroupArrayAdapter extends ArrayAdapter<GroupText> {
 
         groupImage.setImageDrawable(drawable);
 
-        TextDrawable drawable1 = TextDrawable.builder()
-                .beginConfig()
-                .width(97)
-                .height(97)
-                .endConfig()
-                .buildRound("\u2714", Color.parseColor("#3F51B5"));
+            TextDrawable drawable1 = TextDrawable.builder()
+                    .beginConfig()
+                    .width(97)
+                    .height(97)
+                    .endConfig()
+                    .buildRound("\u2714", Color.parseColor("#3F51B5"));
 
-        groupChecked.setImageDrawable(drawable1);
+            groupChecked.setImageDrawable(drawable1);
+
+        if (groupText.selected) {
+            groupChecked.setVisibility(View.VISIBLE);
+        } else {
+            groupChecked.setVisibility(View.GONE);
+        }
 
         return row;
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -18,23 +19,17 @@ import me.zeshan.groupyak.Util.KitKatUI;
 
 public class MainActivity extends ActionBarActivity {
 
-    GroupArrayAdapter groupArrayAdapter;
-    ListView groupList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        groupArrayAdapter = new GroupArrayAdapter(getApplicationContext(), R.layout.group_layout);
-        groupList = (ListView) findViewById(R.id.groupList);
 
         // Setup groups stored in DB
         new GroupHandler(this).initialSetup();
 
         // Setup button listeners
         new FloatListeners(this);
-        new GroupListLong(this);
+        new GroupListLong(this, getSupportActionBar());
 
         // KitKat UI
         new KitKatUI(this);
@@ -43,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(1, 1, 1, "Settings");
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -57,24 +53,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("Profile Options");
-        menu.add(0, 1000, 0, "Header1"); // give your menus distinct ids!!!
-        menu.add(0, 1001, 0, "Header2");
+        getMenuInflater().inflate(R.menu.delete_menu , menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case 1000:
-                //first ContextMenu option I picked this to start the  new activity
-
-                break;
-            case 1001:
-                //stuff for option 2 of the ContextMenu
-                break;
+            case R.id.delete:
+                // your first action code
+                return true;
+            default:
+                return super.onContextItemSelected(item);
         }
-        return super.onContextItemSelected(item);
     }
 }

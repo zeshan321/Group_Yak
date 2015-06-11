@@ -36,7 +36,7 @@ public class GroupDatabase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
-    public void deleteMessage(String ID) {
+    public void deleteGroup(String ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CONTACTS, "? = ?", new String[] { KEY_ID, ID });
         db.close();
