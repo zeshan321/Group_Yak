@@ -2,7 +2,7 @@
     <string name="app_name">GroupYak</string>
 
     <string name="action_settings">Settings</string>
-    <string name="join_hint">Group Name</string>
+    <string name="join_hint">Group ID</string>
     <string name="join_group">Join Group</string>
     <string name="delete_group">Delete</string>
     <string name="error">Oops! Something went wrong.</string>

@@ -1,6 +1,5 @@
 package me.zeshan.groupyak.Dialogs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -50,7 +48,7 @@ public class CreateGroup {
                         // Get inputted data
                         final String ID = editText.getText().toString();
                         final String name = editText1.getText().toString();
-                        final boolean type = checkBox.isSelected();
+                        final boolean type = checkBox.isChecked();
 
                         if (ID.length() < 1) {
                             new ToastMessage(con, con.getString(R.string.group_length_ID), 0).sendToast();
@@ -70,29 +68,16 @@ public class CreateGroup {
                                     if (parseObjects.size() > 0) {
                                         new ToastMessage(con, con.getString(R.string.group_in_use), 0).sendToast();
                                     } else {
-                                        Thread thread = new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                ParseObject addGroup = new ParseObject("Groups");
-                                                addGroup.put("Display", name);
-                                                addGroup.put("ID", ID);
-                                                addGroup.put("Private", type);
-                                                try {
-                                                    addGroup.save();
-                                                } catch (ParseException e1) {
-                                                    e1.printStackTrace();
-                                                }
-                                                ((Activity) con).runOnUiThread(new Runnable() {
-                                                    public void run() {
-                                                        new GroupDatabase(con).addGroup(name, ID);
-                                                        new GroupHandler(con).tempAdd(name, ID);
+                                        ParseObject addGroup = new ParseObject("Groups");
+                                        addGroup.put("Display", name);
+                                        addGroup.put("ID", ID);
+                                        addGroup.put("Private", type);
+                                        addGroup.saveInBackground();
 
-                                                        new ToastMessage(con, con.getString(R.string.group_created), 0).sendToast();
-                                                    }
-                                                });
-                                            }
-                                        });
-                                        thread.start();
+                                        new GroupDatabase(con).addGroup(name, ID);
+                                        new GroupHandler(con).tempAdd(name, ID);
+
+                                        new ToastMessage(con, con.getString(R.string.group_created), 0).sendToast();
                                     }
                                 } else {
                                     new ToastMessage(con, con.getString(R.string.error), 0).sendToast();

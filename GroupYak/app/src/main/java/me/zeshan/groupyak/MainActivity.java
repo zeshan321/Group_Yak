@@ -10,6 +10,7 @@ import android.view.View;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Buttons.FloatListeners;
 import me.zeshan.groupyak.Buttons.GroupListLong;
+import me.zeshan.groupyak.Buttons.GroupSelect;
 import me.zeshan.groupyak.Util.GroupsUpdater;
 import me.zeshan.groupyak.Util.KitKatUI;
 
@@ -29,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
         // Setup button listeners
         new FloatListeners(this);
         new GroupListLong(this, getSupportActionBar());
+        new GroupSelect(this);
 
         // KitKat UI
         new KitKatUI(this);
