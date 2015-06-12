@@ -11,4 +11,9 @@
     <string name="group_added">Group has been added!</string>
     <string name="group_not_found">Group does not exist!</string>
 
+    <string name="groupcreate_name">Group display name</string>
+    <string name="groupcreate_id">Group ID</string>
+    <string name="create_group">Create Group</string>
+    <string name="private_group">Private</string>
+
 </resources>

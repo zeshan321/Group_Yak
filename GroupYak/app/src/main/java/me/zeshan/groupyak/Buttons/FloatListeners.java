@@ -7,6 +7,7 @@ import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
+import me.zeshan.groupyak.Dialogs.CreateGroup;
 import me.zeshan.groupyak.Dialogs.JoinGroup;
 import me.zeshan.groupyak.R;
 
@@ -35,6 +36,15 @@ public class FloatListeners {
     }
 
     private void onCreate() {
+        final FloatingActionButton actionA = (FloatingActionButton) ((Activity)con).findViewById(R.id.createGroup);
+        actionA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FloatingActionsMenu actionM = (FloatingActionsMenu) ((Activity)con).findViewById(R.id.multiple_actions);
+                actionM.collapse();
 
+                new CreateGroup(con);
+            }
+        });
     }
 }
