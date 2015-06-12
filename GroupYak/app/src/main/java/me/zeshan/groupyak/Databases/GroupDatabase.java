@@ -38,7 +38,32 @@ public class GroupDatabase extends SQLiteOpenHelper {
 
     public void deleteGroup(String ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CONTACTS, "? = ?", new String[] { KEY_ID, ID });
+        db.delete(TABLE_CONTACTS, "groupID = ?", new String[] { ID });
+        db.close();
+    }
+
+    public boolean containsGroup(String ID) {
+        String selectQuery = "SELECT * FROM " + TABLE_CONTACTS + " WHERE  groupID = ?";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[] { ID });
+
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        }
+
+        cursor.close();
+        return false;
+    }
+
+    public void updateGroup(String name, String ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name);
+
+        db.update(TABLE_CONTACTS, values, "groupID=?", new String[] { ID });
         db.close();
     }
 

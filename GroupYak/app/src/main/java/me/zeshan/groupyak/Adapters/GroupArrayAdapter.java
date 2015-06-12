@@ -48,6 +48,18 @@ public class GroupArrayAdapter extends ArrayAdapter<GroupText> {
         super.clear();
     }
 
+    public int getByID(String ID) {
+        int i = -1;
+
+        for (GroupText groupText: groupList) {
+            i++;
+            if (groupText.groupID.equals(ID)) {
+                break;
+            }
+        }
+        return i;
+    }
+
     public void add(int i, GroupText object) {
         groupList.add(i, object);
     }

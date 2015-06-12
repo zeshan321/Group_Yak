@@ -14,6 +14,7 @@ import me.zeshan.groupyak.Adapters.GroupArrayAdapter;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Buttons.FloatListeners;
 import me.zeshan.groupyak.Buttons.GroupListLong;
+import me.zeshan.groupyak.Util.GroupsUpdater;
 import me.zeshan.groupyak.Util.KitKatUI;
 
 
@@ -24,8 +25,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setup groups stored in DB
-        new GroupHandler(this).initialSetup();
+        // Setup groups stored in DB and check for updates
+        GroupHandler groupHandler = new GroupHandler(this);
+        groupHandler.initialSetup();
+        new GroupsUpdater(this, groupHandler.groups);
 
         // Setup button listeners
         new FloatListeners(this);

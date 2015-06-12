@@ -5,5 +5,10 @@
     <string name="join_hint">Group Name</string>
     <string name="join_group">Join Group</string>
     <string name="delete_group">Delete</string>
+    <string name="error">Oops! Something went wrong.</string>
+    <string name="already_in_group">You are already in that group!</string>
+    <string name="loading">Loading…</string>
+    <string name="group_added">Group has been added!</string>
+    <string name="group_not_found">Group does not exist!</string>
 
 </resources>

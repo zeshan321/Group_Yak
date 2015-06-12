@@ -64,11 +64,13 @@ public class GroupListLong {
 
                 if (selected.size() > 0 && !isOpen) {
                     isOpen = true;
+
                     actionBar.hide();
                     actionMode = ((Activity) con).startActionMode(mActionModeCallback);
                 } else {
-                    if (!(selected.size() > 0) && actionMode == null) {
+                    if (selected.size() == 0 && actionMode != null) {
                         isOpen = false;
+
                         actionBar.show();
                         actionMode.finish();
                     }
@@ -124,8 +126,21 @@ public class GroupListLong {
 
         @Override
         public void onDestroyActionMode(ActionMode mode) {
+            isOpen = false;
+
             actionBar.show();
             actionMode.finish();
+
+            while (selected.listIterator().hasNext()) {
+                String pos = selected.listIterator().next();
+
+                GroupText groupText = GroupHandler.groupArrayAdapter.getItem(Integer.parseInt(pos));
+                groupText.selected = false;
+
+                selected.remove(pos);
+            }
+
+            GroupHandler.groupArrayAdapter.notifyDataSetChanged();
         }
     };
 }

@@ -5,4 +5,5 @@
     <color name="white">#E3F2FD</color>
     <color name="whitepress">#90CAF9</color>
     <color name="pressedFloat">#C5CAE9</color>
+    <color name="darkmain">#303F9F</color>
 </resources>
