@@ -23,11 +23,11 @@ public class FloatListeners {
     }
 
     private void onJoin() {
-        final FloatingActionButton actionA = (FloatingActionButton) ((Activity)con).findViewById(R.id.joinGroup);
+        final FloatingActionButton actionA = (FloatingActionButton) ((Activity) con).findViewById(R.id.joinGroup);
         actionA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FloatingActionsMenu actionM = (FloatingActionsMenu) ((Activity)con).findViewById(R.id.multiple_actions);
+                FloatingActionsMenu actionM = (FloatingActionsMenu) ((Activity) con).findViewById(R.id.multiple_actions);
                 actionM.collapse();
 
                 new JoinGroup(con);
@@ -36,11 +36,11 @@ public class FloatListeners {
     }
 
     private void onCreate() {
-        final FloatingActionButton actionA = (FloatingActionButton) ((Activity)con).findViewById(R.id.createGroup);
+        final FloatingActionButton actionA = (FloatingActionButton) ((Activity) con).findViewById(R.id.createGroup);
         actionA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FloatingActionsMenu actionM = (FloatingActionsMenu) ((Activity)con).findViewById(R.id.multiple_actions);
+                FloatingActionsMenu actionM = (FloatingActionsMenu) ((Activity) con).findViewById(R.id.multiple_actions);
                 actionM.collapse();
 
                 new CreateGroup(con);

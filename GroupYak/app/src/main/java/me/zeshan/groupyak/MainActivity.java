@@ -1,20 +1,15 @@
 package me.zeshan.groupyak;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
+import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 
-import me.zeshan.groupyak.Adapters.GroupArrayAdapter;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Buttons.FloatListeners;
 import me.zeshan.groupyak.Buttons.GroupListLong;
-import me.zeshan.groupyak.Dialogs.CreateListener;
 import me.zeshan.groupyak.Util.GroupsUpdater;
 import me.zeshan.groupyak.Util.KitKatUI;
 

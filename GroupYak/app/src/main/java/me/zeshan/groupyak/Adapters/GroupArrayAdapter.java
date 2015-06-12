@@ -1,6 +1,5 @@
 package me.zeshan.groupyak.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -51,7 +50,7 @@ public class GroupArrayAdapter extends ArrayAdapter<GroupText> {
     public int getByID(String ID) {
         int i = -1;
 
-        for (GroupText groupText: groupList) {
+        for (GroupText groupText : groupList) {
             i++;
             if (groupText.groupID.equals(ID)) {
                 break;
@@ -109,14 +108,14 @@ public class GroupArrayAdapter extends ArrayAdapter<GroupText> {
 
         groupImage.setImageDrawable(drawable);
 
-            TextDrawable drawable1 = TextDrawable.builder()
-                    .beginConfig()
-                    .width(97)
-                    .height(97)
-                    .endConfig()
-                    .buildRound("\u2714", Color.parseColor("#3F51B5"));
+        TextDrawable drawable1 = TextDrawable.builder()
+                .beginConfig()
+                .width(97)
+                .height(97)
+                .endConfig()
+                .buildRound("\u2714", Color.parseColor("#3F51B5"));
 
-            groupChecked.setImageDrawable(drawable1);
+        groupChecked.setImageDrawable(drawable1);
 
         if (groupText.selected) {
             groupChecked.setVisibility(View.VISIBLE);

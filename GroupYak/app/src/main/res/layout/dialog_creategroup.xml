@@ -40,10 +40,10 @@
         android:hint="@string/groupcreate_name" />
 
     <CheckBox
+        android:id="@+id/CreateType"
         android:layout_width="354dp"
         android:layout_height="wrap_content"
-        android:text="@string/private_group"
-        android:id="@+id/checkBox"/>
+        android:text="@string/private_group"/>
 
 
 </LinearLayout>

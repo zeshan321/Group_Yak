@@ -15,5 +15,10 @@
     <string name="groupcreate_id">Group ID</string>
     <string name="create_group">Create Group</string>
     <string name="private_group">Private</string>
+    <string name="group_in_use">Group ID is already in use!</string>
+    <string name="group_created">Group created!</string>
+
+    <string name="group_length_ID">Group ID has to be longer than 1 character!</string>
+    <string name="group_length_display">Group display name has to be longer than 1 character!</string>
 
 </resources>

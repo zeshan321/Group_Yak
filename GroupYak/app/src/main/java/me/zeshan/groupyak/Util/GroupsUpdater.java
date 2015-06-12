@@ -32,7 +32,7 @@ public class GroupsUpdater {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
-                    for (ParseObject parseObject: parseObjects) {
+                    for (ParseObject parseObject : parseObjects) {
                         if (parseObject != null) {
                             String display = parseObject.getString("Display");
                             String ID = parseObject.getString("ID");

@@ -1,6 +1,5 @@
 package me.zeshan.groupyak.Dialogs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,7 +30,7 @@ public class JoinGroup {
 
     private void createDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(con);
-        LayoutInflater inflater = (LayoutInflater) con.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+        LayoutInflater inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View v = inflater.inflate(R.layout.dialog_joingroup, null);
 
         builder.setView(v).setPositiveButton("Join", new DialogInterface.OnClickListener() {

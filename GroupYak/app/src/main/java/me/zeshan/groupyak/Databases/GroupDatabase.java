@@ -34,11 +34,12 @@ public class GroupDatabase extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 
     public void deleteGroup(String ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CONTACTS, "groupID = ?", new String[] { ID });
+        db.delete(TABLE_CONTACTS, "groupID = ?", new String[]{ID});
         db.close();
     }
 
@@ -46,7 +47,7 @@ public class GroupDatabase extends SQLiteOpenHelper {
         String selectQuery = "SELECT * FROM " + TABLE_CONTACTS + " WHERE  groupID = ?";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, new String[] { ID });
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{ID});
 
         if (cursor.getCount() > 0) {
             cursor.close();
@@ -63,7 +64,7 @@ public class GroupDatabase extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name);
 
-        db.update(TABLE_CONTACTS, values, "groupID=?", new String[] { ID });
+        db.update(TABLE_CONTACTS, values, "groupID=?", new String[]{ID});
         db.close();
     }
 

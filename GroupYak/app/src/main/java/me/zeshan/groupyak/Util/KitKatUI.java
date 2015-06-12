@@ -22,8 +22,8 @@ public class KitKatUI {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setNav() {
-            Window window = ((Activity)con).getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#303F9F"));
+        Window window = ((Activity) con).getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.parseColor("#303F9F"));
     }
 }

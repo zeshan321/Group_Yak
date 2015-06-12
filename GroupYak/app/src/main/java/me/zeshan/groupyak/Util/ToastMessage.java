@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import me.zeshan.groupyak.R;
 
 public class ToastMessage {
@@ -26,9 +25,9 @@ public class ToastMessage {
 
 
     public void sendToast() {
-        LayoutInflater inflater = ((Activity)con).getLayoutInflater();
+        LayoutInflater inflater = ((Activity) con).getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_layout,
-                (ViewGroup) ((Activity)con).findViewById(R.id.toast_layout_root));
+                (ViewGroup) ((Activity) con).findViewById(R.id.toast_layout_root));
 
         TextView text = (TextView) layout.findViewById(R.id.text);
         text.setText(message);

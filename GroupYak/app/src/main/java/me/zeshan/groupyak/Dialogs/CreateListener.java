@@ -1,6 +1,5 @@
 package me.zeshan.groupyak.Dialogs;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -41,6 +40,6 @@ public class CreateListener {
 
 
             }
-            });
-        }
+        });
     }
+}

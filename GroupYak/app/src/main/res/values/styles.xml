@@ -3,6 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="actionBarStyle">@style/ActionBar</item>
+        <item name="android:actionModeBackground">@color/darkmain</item>
     </style>
 
     <!-- Action Bar Styles -->
@@ -10,11 +11,6 @@
         <item name="background">@color/actionbar</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
 
-    </style>
-
-    <style name="ActionMode">
-        <item name="android:background">@color/actionbar</item>
-        <item name="android:actionModeBackground">@color/actionbar</item>
     </style>
 
     <style name="MyActionBarTitleText"
