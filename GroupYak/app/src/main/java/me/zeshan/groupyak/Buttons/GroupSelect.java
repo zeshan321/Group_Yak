@@ -10,6 +10,7 @@ import android.widget.ListView;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Adapters.GroupText;
 import me.zeshan.groupyak.PostActivity;
+import me.zeshan.groupyak.R;
 
 public class GroupSelect {
 
@@ -36,6 +37,7 @@ public class GroupSelect {
                 intent.putExtra("ID", groupText.groupID);
 
                 con.startActivity(intent);
+                ((Activity)con).overridePendingTransition(R.transition.activity_to_1, R.transition.activity_to_2);
             }
         });
     }

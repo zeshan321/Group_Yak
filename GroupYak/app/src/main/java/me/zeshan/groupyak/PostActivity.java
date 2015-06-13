@@ -3,7 +3,11 @@ package me.zeshan.groupyak;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import me.zeshan.groupyak.Util.KitKatUI;
 
 public class PostActivity extends ActionBarActivity {
 
@@ -15,6 +19,12 @@ public class PostActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        // Show back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // KitKat UI
+        new KitKatUI(this);
+
         // Get selected group data
         Intent intent = getIntent();
         display = intent.getStringExtra("Display");
@@ -24,5 +34,35 @@ public class PostActivity extends ActionBarActivity {
         textView.setText(display + " : " + ID);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(intent);
+                overridePendingTransition(R.transition.activity_from_1, R.transition.activity_from_2);
+                return true;
+            case 1:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(1, 1, 1, "Settings");
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        overridePendingTransition(R.transition.activity_from_1, R.transition.activity_from_2);
     }
 }
