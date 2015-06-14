@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+    android:textSize="30sp"
+    android:textColor="#212121"
+    android:gravity="center_vertical"
+    android:text="Testing"
+    android:id="@+id/Post_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textIsSelectable="true"/>
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="#212121"
+        android:gravity="center_vertical"
+        android:text="Testing"
+        android:id="@+id/Post_Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true" />
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dip"
+        android:paddingBottom="15dip">
+
+    <ImageButton
+        android:src="@drawable/ic_thumbs_up_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:id="@+id/Thumbsup" />
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#212121"
+            android:text="1000"
+            android:id="@+id/Vote_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true" />
+
+    <ImageButton
+        android:src="@drawable/ic_thumbs_down_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:id="@+id/Thumbsdown" />
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/Post_object"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>

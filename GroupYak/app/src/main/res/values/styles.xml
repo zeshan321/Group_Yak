@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="actionBarStyle">@style/ActionBar</item>
         <item name="android:actionModeBackground">@color/darkmain</item>
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <!-- Action Bar Styles -->

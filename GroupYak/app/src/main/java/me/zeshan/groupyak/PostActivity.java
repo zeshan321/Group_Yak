@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import me.zeshan.groupyak.Adapters.PostHandler;
+import me.zeshan.groupyak.Buttons.VoteListeners;
 import me.zeshan.groupyak.Util.KitKatUI;
 
 public class PostActivity extends ActionBarActivity {
@@ -19,21 +21,22 @@ public class PostActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        // Get selected group data
+        Intent intent = getIntent();
+        display = intent.getStringExtra("Display");
+        ID = intent.getStringExtra("ID");
+
+        // Load posts
+        new PostHandler(this, ID).initialSetup();
+
         // Show back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // KitKat UI
         new KitKatUI(this);
 
-        // Get selected group data
-        Intent intent = getIntent();
-        display = intent.getStringExtra("Display");
-        ID = intent.getStringExtra("ID");
-
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(display + " : " + ID);
-
-
+        // Set title
+        getSupportActionBar().setTitle(display);
     }
 
     @Override

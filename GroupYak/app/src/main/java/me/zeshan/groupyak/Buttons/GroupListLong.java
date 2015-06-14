@@ -22,8 +22,8 @@ import me.zeshan.groupyak.R;
 public class GroupListLong {
 
     Context con;
-    ActionBar actionBar;
     ActionMode actionMode;
+    ActionBar actionBar;
 
     boolean isOpen = false;
     List<String> selected = new ArrayList<>();
@@ -61,14 +61,13 @@ public class GroupListLong {
                 if (selected.size() > 0 && !isOpen) {
                     isOpen = true;
 
-                    actionBar.hide();
                     actionMode = ((Activity) con).startActionMode(mActionModeCallback);
                 } else {
                     if (selected.size() == 0 && actionMode != null) {
                         isOpen = false;
 
-                        actionBar.show();
                         actionMode.finish();
+
                     }
                 }
                 return true;
@@ -107,7 +106,6 @@ public class GroupListLong {
                         }
 
                         if (selected.isEmpty()) {
-                            actionBar.show();
                             actionMode.finish();
                             isOpen = false;
                         }
@@ -124,7 +122,6 @@ public class GroupListLong {
         public void onDestroyActionMode(ActionMode mode) {
             isOpen = false;
 
-            actionBar.show();
             actionMode.finish();
 
             while (selected.listIterator().hasNext()) {
