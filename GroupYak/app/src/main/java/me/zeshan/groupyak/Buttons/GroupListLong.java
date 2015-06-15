@@ -99,10 +99,12 @@ public class GroupListLong {
                             String pos = selected.listIterator().next();
 
                             // Remove from DB
-                            groupDatabase.deleteGroup(GroupHandler.groupArrayAdapter.getItem(Integer.parseInt(pos)).groupID);
+                            if (pos != null) {
+                                groupDatabase.deleteGroup(GroupHandler.groupArrayAdapter.getItem(Integer.parseInt(pos)).groupID);
 
-                            GroupHandler.groupArrayAdapter.removeGroup(Integer.parseInt(pos));
-                            selected.remove(pos);
+                                GroupHandler.groupArrayAdapter.removeGroup(Integer.parseInt(pos));
+                                selected.remove(pos);
+                            }
                         }
 
                         if (selected.isEmpty()) {

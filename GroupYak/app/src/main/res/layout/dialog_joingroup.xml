@@ -26,6 +26,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
+        android:inputType=
+            "text|textCapSentences|textAutoCorrect"
         android:hint="@string/join_hint" />
 
 </LinearLayout>

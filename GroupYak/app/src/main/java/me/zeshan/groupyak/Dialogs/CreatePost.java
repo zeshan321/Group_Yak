@@ -15,6 +15,7 @@ import com.parse.ParseObject;
 import me.zeshan.groupyak.Adapters.PostHandler;
 import me.zeshan.groupyak.R;
 import me.zeshan.groupyak.SettingsManager;
+import me.zeshan.groupyak.Util.StringUtil;
 import me.zeshan.groupyak.Util.ToastMessage;
 
 public class CreatePost {
@@ -44,12 +45,12 @@ public class CreatePost {
                         final String title = postTitle.getText().toString();
                         final String body = postBody.getText().toString();
 
-                        if (title.length() < 1 || title.replace(" ", "").length() < 1) {
+                        if (!new StringUtil().checkString(title)) {
                             new ToastMessage(con, con.getString(R.string.group_length_title), 0).sendToast();
                             return;
                         }
 
-                        if (body.length() < 1  || body.replace(" ", "").length() < 1) {
+                        if (!new StringUtil().checkString(body)) {
                             new ToastMessage(con, con.getString(R.string.group_length_body), 0).sendToast();
                             return;
                         }

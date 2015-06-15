@@ -3,6 +3,7 @@ package me.zeshan.groupyak.Dialogs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -18,6 +19,7 @@ import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Databases.GroupDatabase;
 import me.zeshan.groupyak.R;
 import me.zeshan.groupyak.SettingsManager;
+import me.zeshan.groupyak.Util.StringUtil;
 import me.zeshan.groupyak.Util.ToastMessage;
 
 public class CreateGroup {
@@ -51,12 +53,12 @@ public class CreateGroup {
                         final String name = editText1.getText().toString();
                         final boolean type = checkBox.isChecked();
 
-                        if (ID.length() < 1  || ID.replace(" ", "").length() < 1) {
+                        if (!new StringUtil().checkString(ID)) {
                             new ToastMessage(con, con.getString(R.string.group_length_ID), 0).sendToast();
                             return;
                         }
 
-                        if (name.length() < 1  || name.replace(" ", "").length() < 1) {
+                        if (!new StringUtil().checkString(name)) {
                             new ToastMessage(con, con.getString(R.string.group_length_display), 0).sendToast();
                             return;
                         }

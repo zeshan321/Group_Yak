@@ -11,6 +11,7 @@ import java.util.List;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Adapters.GroupText;
 import me.zeshan.groupyak.Databases.GroupDatabase;
+import me.zeshan.groupyak.SettingsManager;
 
 public class GroupsUpdater {
 
@@ -36,6 +37,7 @@ public class GroupsUpdater {
                         if (parseObject != null) {
                             String display = parseObject.getString("Display");
                             String ID = parseObject.getString("ID");
+                            String owner = parseObject.getString("Owner");
 
                             // Update DB
                             groupDatabase.updateGroup(display, ID);
@@ -43,6 +45,9 @@ public class GroupsUpdater {
                             // Update GroupText
                             GroupText groupText = GroupHandler.groupArrayAdapter.getItem(GroupHandler.groupArrayAdapter.getByID(ID));
                             groupText.groupName = display;
+                            if (owner.equals(new SettingsManager(con).getString("ID"))) {
+                                groupText.isOwner = true;
+                            }
                         }
                     }
 

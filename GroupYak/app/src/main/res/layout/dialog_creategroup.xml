@@ -27,6 +27,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
+        android:inputType=
+            "textCapSentences|textAutoCorrect"
         android:hint="@string/groupcreate_id" />
 
     <EditText
@@ -37,6 +39,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
+        android:inputType=
+            "textCapSentences|textAutoCorrect"
         android:hint="@string/groupcreate_name" />
 
     <CheckBox

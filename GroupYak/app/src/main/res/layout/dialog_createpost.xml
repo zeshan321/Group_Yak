@@ -25,14 +25,17 @@
         android:id="@+id/create_post_title"
         android:hint="@string/post_title"
         android:layout_gravity="center_horizontal"
+        android:inputType=
+            "textCapSentences|textAutoCorrect"
         android:layout_marginBottom="10dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/create_post_body"
         android:hint="@string/post_body"
+        android:inputType=
+            "textCapSentences|textAutoCorrect|textMultiLine"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

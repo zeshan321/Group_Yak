@@ -32,14 +32,14 @@ public class GroupHandler {
         HashMap<String, String> map = groupDatabase.getGroups();
         for (String key: map.keySet()) {
             groups.add(map.get(key));
-            groupArrayAdapter.add(new GroupText(key, map.get(key), false));
+            groupArrayAdapter.add(new GroupText(key, map.get(key), false, false));
         }
 
         groupList.setAdapter(groupArrayAdapter);
     }
 
     public void tempAdd(String name, String ID) {
-        groupArrayAdapter.add(new GroupText(name, ID, false));
+        groupArrayAdapter.add(new GroupText(name, ID, false, false));
         groupList.setAdapter(groupArrayAdapter);
     }
 }

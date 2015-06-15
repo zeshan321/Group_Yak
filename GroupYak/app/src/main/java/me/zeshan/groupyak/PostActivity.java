@@ -17,6 +17,7 @@ public class PostActivity extends ActionBarActivity {
 
     String display;
     String ID;
+    boolean isOwner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class PostActivity extends ActionBarActivity {
         Intent intent = getIntent();
         display = intent.getStringExtra("Display");
         ID = intent.getStringExtra("ID");
+        isOwner = intent.getBooleanExtra("Owner", false);
 
         // Load posts
         new PostHandler(this, ID).initialSetup();

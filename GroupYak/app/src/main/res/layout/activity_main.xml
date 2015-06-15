@@ -37,7 +37,7 @@
             fab:fab_colorNormal="@color/actionbar"
             fab:fab_icon="@drawable/ic_fa_pencil"
             fab:fab_title="Create group"
-            fab:fab_colorPressed="@color/pressedFloat"/>
+            fab:fab_colorPressed="@color/darkmain"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/joinGroup"
@@ -46,6 +46,6 @@
             fab:fab_icon="@drawable/ic_fa_pencil"
             fab:fab_colorNormal="@color/actionbar"
             fab:fab_title="Join group"
-            fab:fab_colorPressed="@color/pressedFloat"/>
+            fab:fab_colorPressed="@color/darkmain"/>
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </RelativeLayout>
