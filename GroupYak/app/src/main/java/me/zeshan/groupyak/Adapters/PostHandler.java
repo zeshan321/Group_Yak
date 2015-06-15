@@ -2,6 +2,7 @@ package me.zeshan.groupyak.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ListView;
 
@@ -53,5 +54,37 @@ public class PostHandler {
         });
 
         postList.setAdapter(postArrayAdapter);
+    }
+
+    public void refreshList(final SwipeRefreshLayout swipeRefreshLayout) {
+        postArrayAdapter = new PostArrayAdapter(con, R.layout.post_layout);
+        postList = (ListView) ((Activity) con).findViewById(R.id.postList);
+
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery("Posts");
+
+        query.whereEqualTo("Group", group);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
+                if (e == null) {
+                    for (ParseObject parseObject : parseObjects) {
+                        if (parseObject != null) {
+                            String title = parseObject.getString("Title");
+                            String body = parseObject.getString("Post");
+                            int votes = parseObject.getInt("Votes");
+
+                            postArrayAdapter.add(new PostText(title, body, parseObject.getObjectId(), votes, 0));
+
+                        }
+                    }
+                }
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        postList.setAdapter(postArrayAdapter);
+    }
+
+    public void tempAdd(String title, String body, String objectID) {
+        postArrayAdapter.add(new PostText(title, body, objectID, 0, 0));
     }
 }

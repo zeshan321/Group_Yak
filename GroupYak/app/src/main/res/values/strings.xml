@@ -21,4 +21,13 @@
     <string name="group_length_ID">Group ID has to be longer than 1 character!</string>
     <string name="group_length_display">Group display name has to be longer than 1 character!</string>
 
+    <string name="post_title">Title</string>
+    <string name="post_body">Body</string>
+    <string name="post_created">Post created!</string>
+
+    <string name="dialog_create_post">Create Post</string>
+
+    <string name="group_length_title">Group title has to be longer than 1 character!</string>
+    <string name="group_length_body">Group body has to be longer than 1 character!</string>
+
 </resources>

@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import me.zeshan.groupyak.Adapters.PostHandler;
+import me.zeshan.groupyak.Buttons.PostListener;
+import me.zeshan.groupyak.Buttons.SwipeRefresh;
 import me.zeshan.groupyak.Buttons.VoteListeners;
 import me.zeshan.groupyak.Util.KitKatUI;
 
@@ -37,6 +39,12 @@ public class PostActivity extends ActionBarActivity {
 
         // Set title
         getSupportActionBar().setTitle(display);
+
+        // Refresh listener
+        new SwipeRefresh(this, ID);
+
+        // Button listener
+        new PostListener(this, ID);
     }
 
     @Override

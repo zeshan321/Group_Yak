@@ -19,6 +19,10 @@
             />
     </RelativeLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/postList"
         android:layout_width="match_parent"
@@ -26,6 +30,7 @@
         android:clipToPadding="false">
 
     </ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/post"

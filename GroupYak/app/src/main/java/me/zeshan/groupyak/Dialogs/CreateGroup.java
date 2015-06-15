@@ -17,6 +17,7 @@ import java.util.List;
 import me.zeshan.groupyak.Adapters.GroupHandler;
 import me.zeshan.groupyak.Databases.GroupDatabase;
 import me.zeshan.groupyak.R;
+import me.zeshan.groupyak.SettingsManager;
 import me.zeshan.groupyak.Util.ToastMessage;
 
 public class CreateGroup {
@@ -50,12 +51,14 @@ public class CreateGroup {
                         final String name = editText1.getText().toString();
                         final boolean type = checkBox.isChecked();
 
-                        if (ID.length() < 1) {
+                        if (ID.length() < 1  || ID.replace(" ", "").length() < 1) {
                             new ToastMessage(con, con.getString(R.string.group_length_ID), 0).sendToast();
+                            return;
                         }
 
-                        if (name.length() < 1) {
+                        if (name.length() < 1  || name.replace(" ", "").length() < 1) {
                             new ToastMessage(con, con.getString(R.string.group_length_display), 0).sendToast();
+                            return;
                         }
 
                         new ToastMessage(con, con.getString(R.string.loading), 0).sendToast();
@@ -69,6 +72,7 @@ public class CreateGroup {
                                         new ToastMessage(con, con.getString(R.string.group_in_use), 0).sendToast();
                                     } else {
                                         ParseObject addGroup = new ParseObject("Groups");
+                                        addGroup.put("Owner", new SettingsManager(con).getString("ID"));
                                         addGroup.put("Display", name);
                                         addGroup.put("ID", ID);
                                         addGroup.put("Private", type);

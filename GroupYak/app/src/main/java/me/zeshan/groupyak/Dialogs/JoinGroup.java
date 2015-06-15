@@ -23,7 +23,7 @@ public class JoinGroup {
     Context con;
 
     public JoinGroup(Context con) {
-        this.con = con;
+        this.con = con; 
 
         createDialog();
     }
