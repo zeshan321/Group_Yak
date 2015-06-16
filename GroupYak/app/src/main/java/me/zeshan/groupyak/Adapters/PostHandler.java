@@ -21,11 +21,23 @@ public class PostHandler {
 
     Context con;
     String group;
+    Type type = Type.NEW;
 
     public PostHandler(Context con, String group) {
         this.con = con;
         this.group = group;
 
+    }
+
+    public PostHandler(Context con, String group, Type type) {
+        this.con = con;
+        this.group = group;
+        this.type = type;
+
+    }
+
+    public enum Type {
+        NEW, HOT, TOP
     }
 
     public void initialSetup() {
@@ -35,6 +47,19 @@ public class PostHandler {
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("Posts");
 
         query.whereEqualTo("Group", group);
+        switch (type) {
+            case HOT:
+                query.addDescendingOrder("createdAt");
+                query.addDescendingOrder("Votes");
+                break;
+            case TOP:
+                query.addDescendingOrder("Votes");
+                break;
+            default:
+                query.addDescendingOrder("createdAt");
+                break;
+
+        }
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
@@ -63,6 +88,19 @@ public class PostHandler {
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("Posts");
 
         query.whereEqualTo("Group", group);
+        switch (type) {
+            case HOT:
+                query.addAscendingOrder("createdAt");
+                query.addAscendingOrder("Votes");
+                break;
+            case TOP:
+                query.addAscendingOrder("Votes");
+                break;
+            default:
+                query.addAscendingOrder("createdAt");
+                break;
+
+        }
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
                 if (e == null) {

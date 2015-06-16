@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import me.zeshan.groupyak.Adapters.PostHandler;
 import me.zeshan.groupyak.Buttons.PostListener;
+import me.zeshan.groupyak.Buttons.SwipeListener;
 import me.zeshan.groupyak.Buttons.SwipeRefresh;
 import me.zeshan.groupyak.Buttons.VoteListeners;
 import me.zeshan.groupyak.Util.KitKatUI;
@@ -47,6 +48,9 @@ public class PostActivity extends ActionBarActivity {
 
         // Button listener
         new PostListener(this, ID);
+
+        // Swipe listener
+        new SwipeListener(this, ID, getSupportActionBar());
     }
 
     @Override
