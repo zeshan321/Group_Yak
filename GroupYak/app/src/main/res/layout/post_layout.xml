@@ -16,7 +16,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_alignLeft="@+id/layout"
-        android:paddingRight="15dp"
+        android:paddingRight="45dp"
         android:paddingLeft="5dp"
         />
 
@@ -32,7 +32,7 @@
         android:textColor="#212121"
         android:textIsSelectable="true"
         android:textSize="20sp"
-        android:paddingRight="15dp"
+        android:paddingRight="45dp"
         android:paddingLeft="5dp"/>
 
     <RelativeLayout
