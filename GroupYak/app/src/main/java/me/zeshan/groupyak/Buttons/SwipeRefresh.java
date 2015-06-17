@@ -16,10 +16,10 @@ public class SwipeRefresh {
         this.con = con;
         this.group = group;
 
-        swipeListener();
+        //swipeListener();
     }
 
-    private void swipeListener() {
+    /*private void swipeListener() {
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) ((Activity)con).findViewById(R.id.activity_main_swipe_refresh_layout);
         swipeRefreshLayout.setColorSchemeColors(R.color.maincolor, R.color.darkmain);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -28,5 +28,5 @@ public class SwipeRefresh {
                 new PostHandler(con, group).refreshList(swipeRefreshLayout);
             }
         });
-    }
+    }*/
 }
