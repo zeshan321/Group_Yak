@@ -10,6 +10,7 @@ import android.widget.ListView;
 import me.zeshan.groupyak.Adapters.PostHandler;
 import me.zeshan.groupyak.R;
 import me.zeshan.groupyak.Util.OnSwipeTouchListener;
+import me.zeshan.groupyak.Util.TabColor;
 
 
 public class SwipeListener {
@@ -20,18 +21,10 @@ public class SwipeListener {
     String group;
     ActionBar actionBar;
 
-    Button buttonNew;
-    Button buttonHot;
-    Button buttonTop;
-
     public SwipeListener(Context con, String group, ActionBar actionBar) {
         this.con = con;
         this.group = group;
         this.actionBar = actionBar;
-
-        this.buttonNew = (Button) ((Activity) con).findViewById(R.id.page_new);
-        this.buttonHot = (Button) ((Activity) con).findViewById(R.id.page_hot);
-        this.buttonTop = (Button) ((Activity) con).findViewById(R.id.page_top);
 
         listListener();
     }
@@ -54,14 +47,14 @@ public class SwipeListener {
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.NEW).initialSetup();
 
-                            setButtonColors(Type.NEW);
+                            new TabColor(con, TabColor.Type.NEW).setColor();
                         }
                         if (swipeLocation == 1) {
                             actionBar.setTitle("Hot");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.HOT).initialSetup();
 
-                            setButtonColors(Type.HOT);
+                            new TabColor(con, TabColor.Type.HOT).setColor();
                         }
                     }
                 }
@@ -80,46 +73,18 @@ public class SwipeListener {
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.HOT).initialSetup();
 
-                            setButtonColors(Type.HOT);
+                            new TabColor(con, TabColor.Type.HOT).setColor();
                         }
                         if (swipeLocation == 2) {
                             actionBar.setTitle("Top");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.TOP).initialSetup();
 
-                            setButtonColors(Type.TOP);
+                            new TabColor(con, TabColor.Type.TOP).setColor();
                         }
                     }
                 }
             }
         });
-    }
-
-    private enum Type {
-        NEW, HOT, TOP
-    }
-
-    private void setButtonColors(Type type) {
-        switch(type) {
-            case NEW:
-                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
-
-                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                break;
-            case HOT:
-                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
-
-                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                break;
-
-            default:
-                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
-
-                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
-                break;
-        }
     }
 }
