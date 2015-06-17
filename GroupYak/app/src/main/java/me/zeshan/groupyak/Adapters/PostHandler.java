@@ -10,6 +10,7 @@ import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.zeshan.groupyak.R;
@@ -18,10 +19,11 @@ public class PostHandler {
 
     public static PostArrayAdapter postArrayAdapter;
     public static ListView postList;
-
+    
     Context con;
     String group;
     Type type = Type.NEW;
+    List<ParseQuery> runningQuery = new ArrayList<>();
 
     public PostHandler(Context con, String group) {
         this.con = con;
@@ -41,10 +43,14 @@ public class PostHandler {
     }
 
     public void initialSetup() {
+        // Stop other runing queries
+        clearQueries();
+
         postArrayAdapter = new PostArrayAdapter(con, R.layout.post_layout);
         postList = (ListView) ((Activity) con).findViewById(R.id.postList);
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("Posts");
+        runningQuery.add(query);
 
         query.whereEqualTo("Group", group);
         switch (type) {
@@ -75,6 +81,7 @@ public class PostHandler {
                     }
                 }
                 ((Activity) con).findViewById(R.id.loading).setVisibility(View.GONE);
+                runningQuery.remove(query);
             }
         });
 
@@ -82,10 +89,14 @@ public class PostHandler {
     }
 
     public void refreshList(final SwipeRefreshLayout swipeRefreshLayout) {
+        // Stop other runing queries
+        clearQueries();
+
         postArrayAdapter = new PostArrayAdapter(con, R.layout.post_layout);
         postList = (ListView) ((Activity) con).findViewById(R.id.postList);
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("Posts");
+        runningQuery.add(query);
 
         query.whereEqualTo("Group", group);
         switch (type) {
@@ -116,6 +127,7 @@ public class PostHandler {
                     }
                 }
                 swipeRefreshLayout.setRefreshing(false);
+                runningQuery.remove(query);
             }
         });
 
@@ -124,5 +136,11 @@ public class PostHandler {
 
     public void tempAdd(String title, String body, String objectID) {
         postArrayAdapter.add(new PostText(title, body, objectID, 0, 0));
+    }
+
+    private void clearQueries() {
+        for (ParseQuery parseQuery: runningQuery) {
+            parseQuery.cancel();
+        }
     }
 }
