@@ -41,7 +41,7 @@ public class PostActivity extends ActionBarActivity {
         new KitKatUI(this);
 
         // Set title
-        getSupportActionBar().setTitle(display);
+        getSupportActionBar().setTitle("New");
 
         // Refresh listener
         new SwipeRefresh(this, ID);
