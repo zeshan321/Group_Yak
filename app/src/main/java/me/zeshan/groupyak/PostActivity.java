@@ -42,9 +42,10 @@ public class PostActivity extends ActionBarActivity {
 
         // Set title
         getSupportActionBar().setTitle("New");
+        getSupportActionBar().setElevation(0);
 
         // Refresh listener
-        //new SwipeRefresh(this, ID);
+        // new SwipeRefresh(this, ID);
 
         // Button listener
         new PostListener(this, ID);

@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
         // KitKat UI
         new KitKatUI(this);
+
     }
 
     @Override

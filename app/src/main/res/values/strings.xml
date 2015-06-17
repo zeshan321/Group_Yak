@@ -30,4 +30,8 @@
     <string name="group_length_title">Group title has to be longer than 1 character!</string>
     <string name="group_length_body">Group body has to be longer than 1 character!</string>
 
+    <string name="button_new">New</string>
+    <string name="button_hot">Hot</string>
+    <string name="button_top">Top</string>
+
 </resources>

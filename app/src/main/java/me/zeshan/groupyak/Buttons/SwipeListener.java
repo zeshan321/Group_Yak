@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import me.zeshan.groupyak.Adapters.PostHandler;
@@ -19,10 +20,18 @@ public class SwipeListener {
     String group;
     ActionBar actionBar;
 
+    Button buttonNew;
+    Button buttonHot;
+    Button buttonTop;
+
     public SwipeListener(Context con, String group, ActionBar actionBar) {
         this.con = con;
         this.group = group;
         this.actionBar = actionBar;
+
+        this.buttonNew = (Button) ((Activity) con).findViewById(R.id.page_new);
+        this.buttonHot = (Button) ((Activity) con).findViewById(R.id.page_hot);
+        this.buttonTop = (Button) ((Activity) con).findViewById(R.id.page_top);
 
         listListener();
     }
@@ -44,11 +53,15 @@ public class SwipeListener {
                             actionBar.setTitle("New");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.NEW).initialSetup();
+
+                            setButtonColors(Type.NEW);
                         }
                         if (swipeLocation == 1) {
                             actionBar.setTitle("Hot");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.HOT).initialSetup();
+
+                            setButtonColors(Type.HOT);
                         }
                     }
                 }
@@ -66,15 +79,47 @@ public class SwipeListener {
                             actionBar.setTitle("Hot");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.HOT).initialSetup();
+
+                            setButtonColors(Type.HOT);
                         }
                         if (swipeLocation == 2) {
                             actionBar.setTitle("Top");
                             ((Activity) con).findViewById(R.id.loading).setVisibility(View.VISIBLE);
                             new PostHandler(con, group, PostHandler.Type.TOP).initialSetup();
+
+                            setButtonColors(Type.TOP);
                         }
                     }
                 }
             }
         });
+    }
+
+    private enum Type {
+        NEW, HOT, TOP
+    }
+
+    private void setButtonColors(Type type) {
+        switch(type) {
+            case NEW:
+                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
+
+                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                break;
+            case HOT:
+                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
+
+                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                break;
+
+            default:
+                buttonTop.setBackgroundColor(con.getResources().getColor(R.color.darkmain));
+
+                buttonHot.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                buttonNew.setBackgroundColor(con.getResources().getColor(R.color.maincolor));
+                break;
+        }
     }
 }

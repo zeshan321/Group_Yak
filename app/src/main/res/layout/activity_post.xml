@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/post_layout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:id="@+id/page_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/page_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/darkmain"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:text="@string/button_new"
+            style="?android:attr/borderlessButtonStyle">
+        </Button>
+        <Button
+            android:id="@+id/page_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/maincolor"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:text="@string/button_hot"
+            style="?android:attr/borderlessButtonStyle">
+        </Button>
+        <Button
+            android:id="@+id/page_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/maincolor"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:text="@string/button_top"
+            style="?android:attr/borderlessButtonStyle">
+        </Button>
+
+        </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/postList"
+        android:layout_below="@+id/page_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+    </ListView>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_icon="@drawable/ic_fa_pencil"
+        fab:fab_colorNormal="@color/maincolor"
+        fab:fab_colorPressed="@color/darkmain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
