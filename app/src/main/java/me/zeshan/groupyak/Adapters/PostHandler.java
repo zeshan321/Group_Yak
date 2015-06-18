@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.zeshan.groupyak.R;
+import me.zeshan.groupyak.SettingsManager;
 
 public class PostHandler {
 
@@ -73,9 +74,10 @@ public class PostHandler {
                         if (parseObject != null) {
                             String title = parseObject.getString("Title");
                             String body = parseObject.getString("Post");
+                            String owner = parseObject.getString("Owner");
                             int votes = parseObject.getInt("Votes");
 
-                            postArrayAdapter.add(new PostText(title, body, parseObject.getObjectId(), votes, 0));
+                            postArrayAdapter.add(new PostText(title, body, parseObject.getObjectId(), owner, votes, 0));
 
                         }
                     }
@@ -119,9 +121,10 @@ public class PostHandler {
                         if (parseObject != null) {
                             String title = parseObject.getString("Title");
                             String body = parseObject.getString("Post");
+                            String owner = parseObject.getString("Owner");
                             int votes = parseObject.getInt("Votes");
 
-                            postArrayAdapter.add(new PostText(title, body, parseObject.getObjectId(), votes, 0));
+                            postArrayAdapter.add(new PostText(title, body, parseObject.getObjectId(), owner, votes, 0));
 
                         }
                     }
@@ -135,7 +138,7 @@ public class PostHandler {
     }
 
     public void tempAdd(String title, String body, String objectID) {
-        postArrayAdapter.add(new PostText(title, body, objectID, 0, 0));
+        postArrayAdapter.add(new PostText(title, body, objectID, new SettingsManager(con).getString("ID"),0, 0));
     }
 
     private void clearQueries() {
